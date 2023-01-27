@@ -82,14 +82,23 @@ class BinBuilder:
         Bet on a single number paying at 35:1
         38 bets / 38 outcomes
         """
+        # for n in range(0, 38):
+        #     if n == 37:
+        #         outcome = Outcome('00', 35)
+        #         Wheel.addOutcome(n, outcome)
+        #     else:
+        #         outcome = Outcome(str(n), 35)
+        #         Wheel.addOutcome(n, outcome)
+
         outcomes = []
         for n in range(0, 38):
             if n == 37:
-                n_outcome = Outcome(name='00', odds=35)
-                outcomes.append((n, n_outcome))
+                current_outcome = Outcome('00', 35)
+
+                outcomes.append((n, current_outcome))
             else:
-                n_outcome = Outcome(name=str(n), odds=35)
-                outcomes.append((n, n_outcome))
+                current_outcome = Outcome(str(n), 35)
+                outcomes.append((n, current_outcome))
         return outcomes
 
     def splitBets(self):
@@ -113,13 +122,25 @@ class BinBuilder:
         A 6 number block (2 street bets) paying at 5:1
         11 possible bets
         """
-        outcomes = []
-        for r in range(0, 11):
-            n = 3*r + 1
-            line = f"{n}-{n+1}-{n+2}-{n+3}-{n+4}-{n+5}"
-            n_outcome = Outcome(name=str(f"Line {line}"), odds=5)
-            outcomes.append((r, n_outcome))
-        return outcomes
+        # outcomes = []
+        # for r in range(0, 11):
+        #     n = 3*r + 1
+        #     line = f"{n}-{n+1}-{n+2}-{n+3}-{n+4}-{n+5}"
+        #     n_outcome = Outcome(name=str(f"Line {line}"), odds=5)
+        #     outcomes.append((r, n_outcome))
+        # return outcomes
+
+        # outcomes = []
+        # for i in range(1, 32, 3):  # increment by 3 each time since left column goes from 1, 4, 7, ...
+        #     line = set(range(i, i+6))
+        #     current_outcome = Outcome('-'.join(str(num) for num in line), 5)
+        #     for _ in line:
+        #         outcomes.append(current_outcome)
+        # return outcomes
+
+        # outcomes = []
+        #
+        # return outcomes
 
     def dozenBets(self):
         """
@@ -145,6 +166,7 @@ class BinBuilder:
         return outcomes
 
 
+wheel = Wheel()
 bb = BinBuilder()
 print(bb.straightBets())
 print(len(bb.straightBets()))
