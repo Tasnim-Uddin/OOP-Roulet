@@ -516,3 +516,34 @@ rsim = Simulator(Martingale(rtable), rgame)
 maxima, duration = rsim.gather()
 print(maxima)
 print(duration)
+
+print()
+
+sevwheel = Wheel()
+sevtable = Table(100, sevwheel)
+sevgame = RouletteGame(sevwheel, sevtable)
+sevsim = Simulator(SevenReds(sevtable), sevgame)
+sevmaxima, sevduration = sevsim.gather()
+print(sevmaxima)
+print(sevduration)
+
+print()
+
+fibwheel = Wheel()
+fibtable = Table(100, fibwheel)
+fibgame = RouletteGame(fibwheel, fibtable)
+fibsim = Simulator(SevenReds(fibtable), fibgame)
+fibmaxima, fibduration = fibsim.gather()
+print(fibmaxima)
+print(fibduration)
+
+print()
+
+randowheel = Wheel()
+randotable = Table(100, randowheel)
+randogame = RouletteGame(randowheel, randotable)
+randosim = Simulator(PlayerRandom(randotable), randogame)
+randomaxima, randoduration = randosim.gather()
+print(randomaxima)
+print(randoduration)
+
